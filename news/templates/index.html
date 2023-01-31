@@ -1,0 +1,43 @@
+{% extends 'layouts.html' %}
+
+{% block main %}
+    <h1>Add Record</h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="name">Name</label><br>
+        <input type="text" name="name" required id="name"><br>
+        <label for="email">Email</label><br>
+        <input type="text" name="email" required id="email"><br>
+        <label for="address">Address</label><br>
+        <input type="text" name="address" required id="address"><br><br>
+        <button>Add</button>
+    </form>
+    <hr>
+    <table calss="table" border="1px">
+    <thead>
+        <tr>
+            <th>S.N</th>
+            <th>Name</th>
+            <th>Email</td>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for students in studentsData %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ students.name }}</td>
+            <td>{{ students.email }}</td>
+            <td>{{ students.address }}</td>
+            <td>
+                <a href="">Update</a>
+                <a href="">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}
